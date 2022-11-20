@@ -1,0 +1,134 @@
+@import "./../../../core/scss/variables.scss";
+
+.note {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $darklight;
+    padding-bottom: 6px;
+  }
+
+  &__title {
+    max-width: 260px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: $primary;
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    transform: scale(0.8)
+  }
+
+  &__tags {
+    margin-top: 30px;
+  }
+}
+
+
+.tag {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  &__name {
+    padding: 0 3px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 2px 6px;
+    background: $primarylight;
+    border-radius: 4px;
+  }
+
+  &__btn:hover {
+    color: $red;
+  }
+
+  &__icon {
+    transform: scale(0.7);
+    transition: all 0.2s;
+  }
+
+  &__icon:hover {
+    transform: scale(0.8);
+  }
+
+}
+
+
+
+.edit-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+
+  &__field {
+    width: 300px;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__btn {
+    transition: all 0.7s;
+  }
+
+  &__icon {
+    border-radius: 6px;
+    padding: 2px;
+    transform: scale(0.7);
+    color: $white;
+    box-shadow: 0 0 0 3px $darkshadow;
+    transition: all 0.7s;
+  }
+
+  &__icon:hover {
+    background-color: $light;
+    box-shadow: 0 0 0 4px $darkshadow;
+   }
+
+  &__icon_check:hover {
+    color: $green;
+  }
+
+  &__icon_close:hover {
+    color: $red;
+  }
+}
+
+::ng-deep.mat-select-arrow {
+  display: none;
+}
+
+::ng-deep.mat-select-trigger {
+  height: 100%;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  margin-top: 0px;
+  width: 100%;
+}
+
+::ng-deep input.mat-input-element {
+  margin-top: 21px;
+  color: $darkgray;
+  letter-spacing: 1.5px;
+}
+
+mat-form-field {
+  width: 100%;
+}

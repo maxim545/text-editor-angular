@@ -1,0 +1,31 @@
+<div class="form">
+  <div class="form__container">
+    <h1 class="form__title">Crete new note</h1>
+    <form [formGroup]="noteCreateFrom" (ngSubmit)="addNewNote()">
+      <div class="form__item">
+        <mat-form-field>
+          <mat-label>title</mat-label>
+          <input formControlName="title" matInput>
+          <mat-error *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)">
+            <div *ngIf="f['title'].errors?.['required']">Please enter a title</div>
+            <div *ngIf="f['title'].errors?.['minlength']">Title must include at least 6 characters</div>
+            <div *ngIf="f['title'].errors?.['maxLength']">Title must include at least 18 characters</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form__item">
+        <mat-form-field>
+          <mat-label>tags</mat-label>
+          <input formControlName="tags" matInput>
+          <mat-error *ngIf="f['tags'].invalid && (f['tags'].dirty || f['tags'].touched)">
+            <div *ngIf="f['tags'].errors?.['required']">Please enter a tag</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="">
+        <button class="btn btn_primary" [disabled]="!noteCreateFrom.valid">Accept</button>
+        <button class="btn btn_primary" type="button" (click)="closeDiadlog()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

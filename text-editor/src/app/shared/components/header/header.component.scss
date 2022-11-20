@@ -1,0 +1,16 @@
+@import "./../../../core/scss/variables.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $white;
+  box-shadow: 0px 1px 3px 1px $blockshadow;
+
+  &__title {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 3px;
+    color: $darkgray;
+  }
+}

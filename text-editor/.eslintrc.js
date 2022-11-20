@@ -40,15 +40,18 @@ module.exports = {
           }
         ],
         "import/prefer-default-export": "off",
+        "class-methods-use-this": "off",
         "@typescript-eslint/no-useless-constructor": "off",
         "@typescript-eslint/no-empty-function": "off",
         "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@typescript-eslint/no-unused-vars": "off",
         "max-len": "off",
         "no-return-assign": "off",
         "no-param-reassign": "off",
         "no-console": "off",
         "no-unneeded-ternary": "off",
         "no-underscore-dangle": "off",
+
       }
     },
     {

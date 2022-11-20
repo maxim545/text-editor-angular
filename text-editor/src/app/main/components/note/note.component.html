@@ -1,0 +1,36 @@
+<div class="note" *ngIf="note">
+  <div class="note__header">
+    <div class="note__title" *ngIf="!isEditModeOn" (click)="this.isEditModeOn = true">{{note.title}}</div>
+    <button class="btn btn_icon" *ngIf="!isEditModeOn" (click)="deleteNote(note)">
+      <mat-icon class="note__icon">delete</mat-icon>
+    </button>
+
+    <form class="edit-form" [formGroup]="editForm" name="form" (ngSubmit)="editNote(note)" *ngIf="isEditModeOn">
+      <div class="efit-form__field">
+        <mat-form-field>
+          <input class="efit-form__input" formControlName="title" matInput>
+          <mat-error *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)">
+            <div *ngIf="f['title'].errors?.['required']">Title is required</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="edit-form__btns">
+        <button class="btn" [disabled]="!editForm.valid" type="submit">
+          <mat-icon class="edit-form__icon_check">check</mat-icon>
+        </button>
+        <button class="btn edit-form__btn" (click)="this.isEditModeOn = false">
+          <mat-icon class="edit-form__icon_close">close</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="note__tags tag">
+    <div class="tag__item" *ngFor="let tag of note.tags">
+      <span class="tag__name">{{tag}}</span>
+      <button class="btn tag__btn" (click)="deletTag(note,tag)">
+        <mat-icon class="tag__icon">close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
