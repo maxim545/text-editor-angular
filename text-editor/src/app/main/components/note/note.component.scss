@@ -1,13 +1,15 @@
 @import "./../../../core/scss/variables.scss";
 
 .note {
-
   &__header {
+    border-bottom: 1px solid $darklight;
+    padding-bottom: 6px;
+  }
+
+  &__title-block{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid $darklight;
-    padding-bottom: 6px;
   }
 
   &__title {
@@ -27,13 +29,73 @@
   &__tags {
     margin-top: 30px;
   }
+
+  &__btns {
+    display: flex;
+  }
+
+  &__textarea-block {
+    display: flex;
+    gap: 7px
+  }
 }
 
+
+/* TEXTAREA STYLES */
+
+.bg-primarylight {
+  background-color: $primarylight;
+}
+
+.form-control-title {
+  width: 100%;
+  resize: none;
+  border-radius: 8px;
+  border: 2px solid $darklight;
+  padding: 5px;
+}
+
+.form-control-title:focus {
+  outline: none ;
+  box-shadow: 0px 1px 3px 1px $blockshadow;
+}
+
+.text-input-highlight-container {
+  position: relative;
+}
+
+.text-input-highlight-container .text-input-element {
+  background: none;
+  position: relative;
+  z-index: 2;
+}
+
+.text-input-highlight-container .text-highlight-element {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  color: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+
+.text-input-highlight-container .text-highlight-tag {
+  border-radius: 8px;
+  padding: 1px 3px;
+  margin: -1px -3px;
+  overflow-wrap: break-word;
+}
+
+/* TAGS STYLES */
 
 .tag {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 20px;
 
   &__name {
     padding: 0 3px;
@@ -51,18 +113,28 @@
     color: $red;
   }
 
+  &__btn {
+    &_add:hover {
+    color: $green;
+    }
+  }
+
   &__icon {
     transform: scale(0.7);
     transition: all 0.2s;
+
+    &_add {
+      transform: scale(0.8);
+    }
   }
 
   &__icon:hover {
     transform: scale(0.8);
   }
-
 }
 
 
+/* EDIT FORM STYLES (For add new tag)  */
 
 .edit-form {
   width: 100%;
@@ -71,8 +143,6 @@
   align-items: center;
   height: 30px;
   background-color: transparent;
-  padding: 0;
-  margin: 0;
 
   &__field {
     width: 300px;
@@ -94,6 +164,10 @@
     color: $white;
     box-shadow: 0 0 0 3px $darkshadow;
     transition: all 0.7s;
+  }
+
+  &__add-icon {
+    transform: scale(0.8);
   }
 
   &__icon:hover {

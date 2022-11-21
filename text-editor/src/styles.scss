@@ -90,8 +90,16 @@ body {
     border-radius: 50%;
   }
 
+  &_small {
+    padding: 0 10px;
+    border-radius: 50%;
+  }
+
+  &_small:hover {
+    background-color: $darkshadow;
+  }
+
   &_icon:hover {
-    color: $red;
     background-color: $darkshadow;
   }
 }
