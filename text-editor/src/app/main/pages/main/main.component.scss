@@ -60,6 +60,23 @@
   &__add-btn:hover {
     background-color: $light;
   }
+}
 
 
+
+@media (max-width: 1024px) {
+  .notes {
+    &__item {
+      grid-column: 6 span;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .notes {
+    &__item {
+      grid-column: 12 span;
+      min-width: 290px;
+    }
+  }
 }
