@@ -1,0 +1,66 @@
+<div class="note" *ngIf="note">
+  <div class="note__header">
+    <div class="note__title-block">
+      <div class="note__title" *ngIf="!editTitleModeOn">{{note.title}}</div>
+      <div class="note__btns">
+        <button class="btn btn_icon" *ngIf="!editTitleModeOn" (click)="this.editTitleModeOn = true">
+          <mat-icon class="note__icon">edit</mat-icon>
+        </button>
+        <button class="btn btn_icon" *ngIf="!editTitleModeOn" (click)="deleteNote(note)">
+          <mat-icon class="note__icon">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="note__textarea-block" mwlTextInputHighlightContainer *ngIf="editTitleModeOn">
+      <textarea mwlTextInputElement class="form-control form-control-title" [(ngModel)]="title" #textarea
+        (input)="highlightTags()">
+      </textarea>
+      <mwl-text-input-highlight [tags]="tags" [textInputElement]="textarea" (tagClick)="tagClicked = $event.tag">
+      </mwl-text-input-highlight>
+      <div class="note__btns">
+        <button class="btn btn_small" (click)="editNote(note)" [disabled]="!title">
+          <mat-icon class="note__icon">check</mat-icon>
+        </button>
+        <button class="btn btn_small" (click)="closeTextArea()">
+          <mat-icon class="note__icon">close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-error *ngIf="!title">
+      <div *ngIf="!title">Title is required</div>
+    </mat-error>
+  </div>
+  <div class="note__tags tag">
+    <div class="tag__item" *ngFor="let tag of note.tags">
+      <span class="tag__name">{{tag}}</span>
+      <button class="btn tag__btn" (click)="deletTag(note,tag)">
+        <mat-icon class="tag__icon">close</mat-icon>
+      </button>
+    </div>
+    <div class="tag__item">
+      <span class="tag__name">
+        <button class="btn tag__btn tag__btn_add" (click)="this.addingModeIsOn = !this.addingModeIsOn">
+          <mat-icon class="tag__icon tag__icon_add">add_circle</mat-icon>
+        </button>
+      </span>
+    </div>
+  </div>
+  <form class="edit-form" [formGroup]="editForm" name="form" (ngSubmit)="editNote(note)" *ngIf="addingModeIsOn">
+    <div class="efit-form__field">
+      <mat-form-field>
+        <input class="efit-form__input" formControlName="tags" matInput>
+        <mat-error *ngIf="f['tags'].invalid && (f['tags'].dirty || f['tags'].touched)">
+          <div *ngIf="f['tags'].errors?.['required']">Tags is required</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="edit-form__btns">
+      <button class="btn" [disabled]="!editForm.valid" type="submit" (click)="addTag(note)">
+        <mat-icon class="edit-form__icon_check">check</mat-icon>
+      </button>
+      <button class="btn edit-form__btn" (click)="this.addingModeIsOn = false">
+        <mat-icon class="edit-form__icon_close">close</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>
