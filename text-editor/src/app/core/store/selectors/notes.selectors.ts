@@ -1,6 +1,4 @@
-import {
-  createFeatureSelector, createSelector,
-} from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { noteStateSelector, selectAll, selectEntities } from '../reducers/notes.reducers';
 
 export const getAllNotes = createSelector(

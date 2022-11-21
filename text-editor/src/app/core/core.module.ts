@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { ActiveFilterDirective } from './directives/active-filter.directive';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ActiveFilterDirective,
+  ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+  ],
+  exports: [
+    ActiveFilterDirective,
+  ],
 })
 export class CoreModule { }

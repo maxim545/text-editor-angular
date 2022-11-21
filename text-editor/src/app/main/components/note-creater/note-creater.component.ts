@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { NoteService } from '../../services/note/note.service';
 
 @Component({
@@ -22,7 +22,6 @@ export class NoteCreaterComponent implements OnInit {
       title: ['', [
         Validators.required,
         Validators.minLength(6),
-        Validators.maxLength(18),
       ]],
       tags: ['', [
         Validators.required,
@@ -34,14 +33,15 @@ export class NoteCreaterComponent implements OnInit {
     return this.noteCreateFrom.controls;
   }
 
-  addNewNote() {
+  addNewNote(): void {
     this.noteService.addNote({
       ...this.noteCreateFrom.value,
       tags: this.noteCreateFrom.value.tags.split(','),
     });
+    this.dialog.closeAll();
   }
 
-  closeDiadlog() {
+  closeDiadlog(): void {
     this.dialog.closeAll();
   }
 }

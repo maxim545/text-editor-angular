@@ -1,10 +1,8 @@
-/* eslint-disable no-cond-assign */
 import {
   Component, Input, OnInit, ViewEncapsulation,
 } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { NoteResponseModel } from 'src/app/core/models/note.model';
-import { ApiService } from 'src/app/core/services/api/api.service';
 import { HighlightTag } from 'angular-text-input-highlight';
 import { NoteService } from '../../services/note/note.service';
 
@@ -49,7 +47,7 @@ export class NoteComponent implements OnInit {
     return this.editForm.controls;
   }
 
-  highlightTags() {
+  highlightTags(): void {
     this.tags = [];
     const matchHashtags = /(#\w+) ?/g;
     let hashtag;
@@ -65,14 +63,14 @@ export class NoteComponent implements OnInit {
     }
   }
 
-  closeTextArea() {
+  closeTextArea(): void {
     this.editTitleModeOn = false;
     if (this.note) {
       this.title = this.note.title;
     }
   }
 
-  editNote(note: NoteResponseModel) {
+  editNote(note: NoteResponseModel): void {
     const addedTags = this.noteService.handleTags(this.title);
     const updateTags = [...note.tags, ...addedTags];
     this.noteService.editNote({
@@ -83,11 +81,11 @@ export class NoteComponent implements OnInit {
     this.editTitleModeOn = false;
   }
 
-  deleteNote(note: NoteResponseModel) {
+  deleteNote(note: NoteResponseModel): void {
     this.noteService.deleteOneNote(note._id);
   }
 
-  addTag(note: NoteResponseModel) {
+  addTag(note: NoteResponseModel): void {
     const addedTags = this.editForm.value.tags.split(',');
     const updateTags = [...note.tags, ...addedTags];
     this.noteService.editNote({
@@ -97,7 +95,7 @@ export class NoteComponent implements OnInit {
     this.addingModeIsOn = false;
   }
 
-  deletTag(note: NoteResponseModel, tag: string) {
+  deletTag(note: NoteResponseModel, tag: string): void {
     this.noteService.deleteOneTag(note, tag);
   }
 }

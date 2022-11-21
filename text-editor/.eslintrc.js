@@ -48,10 +48,9 @@ module.exports = {
         "max-len": "off",
         "no-return-assign": "off",
         "no-param-reassign": "off",
-        "no-console": "off",
         "no-unneeded-ternary": "off",
         "no-underscore-dangle": "off",
-
+        "no-cond-assign": "off",
       }
     },
     {

@@ -1,9 +1,10 @@
-@import "./../../../core/scss/variables.scss";
+@import "./../../../../assets/scss/variables.scss";
 
 .header {
   display: flex;
   justify-content: center;
   background-color: $white;
+  border-radius: 3px;
   box-shadow: 0px 1px 3px 1px $blockshadow;
 
   &__title {

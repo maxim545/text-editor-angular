@@ -5,7 +5,8 @@
       <div class="notes__tags">
         <p *ngIf="!tags.length">You don't have any tags</p>
         <div class="notes__tag" *ngFor="let tag of tags">
-          <button class="btn btn_primary">{{tag}}</button>
+          <button class="btn btn_primary" (click)="filterByTagName(tag)" [appActiveFilter]="tag">
+            {{tag}}</button>
         </div>
       </div>
     </div>
@@ -13,6 +14,5 @@
     <div class="notes__list">
       <app-note class="notes__item" *ngFor="let note of notes$ | async" [note]="note"></app-note>
     </div>
-
   </div>
 </div>

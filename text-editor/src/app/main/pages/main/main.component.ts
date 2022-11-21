@@ -28,17 +28,15 @@ export class MainComponent implements OnInit {
     this.noteService.updateTags();
   }
 
-  get tags$() {
+  get tags$(): Observable<string[]> | null {
     return this.noteService.tags$;
   }
 
-  openNoteCreator() {
+  openNoteCreator(): void {
     this.dialog.open(NoteCreaterComponent, {});
   }
 
-  /*  filterByTagName(tag: string) {
-    this.notes$ = this.notes$.pipe(
-      map((notes) => notes.filter((note) => note.tags.includes(tag))),
-    );
-  } */
+  filterByTagName(tag: string): void {
+    this.notes$ = this.noteService.filterNote(tag);
+  }
 }
